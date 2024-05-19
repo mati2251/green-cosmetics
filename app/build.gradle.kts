@@ -57,6 +57,7 @@ dependencies {
     androidTestImplementation(composeBom)
 
     implementation("androidx.compose.material3:material3")
+    runtimeOnly("com.google.accompanist:accompanist-permissions:0.34.0")
 
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
