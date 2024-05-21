@@ -1,0 +1,12 @@
+create sequence products_seq start with 1 increment by 50;
+create table ingredients (description varchar(255), id varchar(255) not null, name varchar(255), product_id varchar(255) not null, primary key (id));
+create table products (id varchar(255) not null, name varchar(255), primary key (id));
+alter table if exists ingredients add constraint FK34jbb91wprx6ys2443vf43cxj foreign key (product_id) references products;
+create sequence products_seq start with 1 increment by 50;
+create table ingredients (description varchar(255), id varchar(255) not null, name varchar(255), product_id varchar(255) not null, primary key (id));
+create table products (id varchar(255) not null, name varchar(255), primary key (id));
+alter table if exists ingredients add constraint FK34jbb91wprx6ys2443vf43cxj foreign key (product_id) references products;
+create sequence products_seq start with 1 increment by 50;
+create table ingredients (description varchar(255), id varchar(255) not null, name varchar(255), product_id varchar(255) not null, primary key (id));
+create table products (id varchar(255) not null, name varchar(255), primary key (id));
+alter table if exists ingredients add constraint FK34jbb91wprx6ys2443vf43cxj foreign key (product_id) references products on delete cascade;
