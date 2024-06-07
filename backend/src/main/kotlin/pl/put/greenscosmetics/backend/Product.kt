@@ -9,7 +9,6 @@ import org.hibernate.annotations.OnDeleteAction
 @Table(name = "products")
 class Product(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     val id: String,
     val name: String,
     @OneToMany(mappedBy = "product", cascade = [CascadeType.ALL])
@@ -19,12 +18,19 @@ class Product(
 @Entity
 @Table(name = "ingredients")
 class Ingredient(
-    @Id val id: String,
+    @Id 
+    val name: String,
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "product_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     val product: Product,
-    val name: String,
-    val description: String,
+    val isNatural: Boolean,
 )
+
+data class ProductRequestBody(
+  val id: String,
+  val name: String,
+  val ingredients: List<String>,
+)
+

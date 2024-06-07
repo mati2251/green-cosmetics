@@ -3,17 +3,20 @@ package pl.put.greencosmetics.ui
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -32,19 +35,27 @@ fun TopBar() {
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
                 title = {
-                    Text(
-                        "Green Cosmetics",
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
+                    TextButton(
+                        onClick = { navController.navigate("main") },
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        Text(
+                            "Green Cosmetics",
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            // font size 16
+                        )
+                    }
                 },
                 scrollBehavior = scrollBehavior,
             )
         },
     ) { innerPadding ->
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .padding(innerPadding)) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+        ) {
             NavHostMaster(navController = navController)
         }
     }
